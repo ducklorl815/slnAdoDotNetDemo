@@ -58,7 +58,7 @@ namespace prjAdoDotNetDemo
             this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(193, 526);
+            this.listBox1.Size = new System.Drawing.Size(193, 561);
             this.listBox1.TabIndex = 0;
             // 
             // panel1
@@ -70,7 +70,7 @@ namespace prjAdoDotNetDemo
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(688, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(185, 526);
+            this.panel1.Size = new System.Drawing.Size(185, 561);
             this.panel1.TabIndex = 1;
             // 
             // button4
@@ -99,6 +99,7 @@ namespace prjAdoDotNetDemo
             btnDelete.TabIndex = 5;
             btnDelete.Text = "刪除";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnInsert
             // 
@@ -218,7 +219,7 @@ namespace prjAdoDotNetDemo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 526);
+            this.ClientSize = new System.Drawing.Size(873, 561);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox3);
@@ -231,6 +232,7 @@ namespace prjAdoDotNetDemo
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.listBox1);
+            this.MinimumSize = new System.Drawing.Size(560, 500);
             this.Name = "FrmCustomerEditor";
             this.Text = "FrmCustomerEditor";
             this.panel1.ResumeLayout(false);

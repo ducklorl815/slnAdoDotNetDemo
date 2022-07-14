@@ -34,6 +34,8 @@ namespace prjAdoDotNetDemo
             System.Windows.Forms.Button btnSelect;
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnAdmin = new System.Windows.Forms.Button();
+            this.txrNum = new System.Windows.Forms.TextBox();
+            this.labSelect = new System.Windows.Forms.Label();
             btnDelete = new System.Windows.Forms.Button();
             btnUpdate = new System.Windows.Forms.Button();
             btnSelect = new System.Windows.Forms.Button();
@@ -89,11 +91,30 @@ namespace prjAdoDotNetDemo
             this.btnAdmin.UseVisualStyleBackColor = true;
             this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
+            // txrNum
+            // 
+            this.txrNum.Location = new System.Drawing.Point(623, 337);
+            this.txrNum.Name = "txrNum";
+            this.txrNum.Size = new System.Drawing.Size(69, 22);
+            this.txrNum.TabIndex = 5;
+            this.txrNum.Text = "10";
+            // 
+            // labSelect
+            // 
+            this.labSelect.AutoSize = true;
+            this.labSelect.Location = new System.Drawing.Point(23, 19);
+            this.labSelect.Name = "labSelect";
+            this.labSelect.Size = new System.Drawing.Size(33, 12);
+            this.labSelect.TabIndex = 6;
+            this.labSelect.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labSelect);
+            this.Controls.Add(this.txrNum);
             this.Controls.Add(this.btnAdmin);
             this.Controls.Add(btnSelect);
             this.Controls.Add(btnUpdate);
@@ -102,6 +123,7 @@ namespace prjAdoDotNetDemo
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -109,6 +131,8 @@ namespace prjAdoDotNetDemo
 
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnAdmin;
+        private System.Windows.Forms.TextBox txrNum;
+        private System.Windows.Forms.Label labSelect;
     }
 }
 
