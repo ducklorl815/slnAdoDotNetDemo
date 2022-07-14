@@ -50,17 +50,6 @@ namespace prjAdoDotNetDemo
             btnSelect = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnInsert
-            // 
-            this.btnInsert.Font = new System.Drawing.Font("微軟正黑體", 12F);
-            this.btnInsert.Location = new System.Drawing.Point(12, 144);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(112, 55);
-            this.btnInsert.TabIndex = 0;
-            this.btnInsert.Text = "新增";
-            this.btnInsert.UseVisualStyleBackColor = true;
-            this.btnInsert.Click += new System.EventHandler(this.button1_Click);
-            // 
             // btnDelete
             // 
             btnDelete.Font = new System.Drawing.Font("微軟正黑體", 12F);
@@ -94,6 +83,17 @@ namespace prjAdoDotNetDemo
             btnSelect.UseVisualStyleBackColor = true;
             btnSelect.Click += new System.EventHandler(this.button4_Click);
             // 
+            // btnInsert
+            // 
+            this.btnInsert.Font = new System.Drawing.Font("微軟正黑體", 12F);
+            this.btnInsert.Location = new System.Drawing.Point(12, 144);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(112, 55);
+            this.btnInsert.TabIndex = 0;
+            this.btnInsert.Text = "新增";
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnAdmin
             // 
             this.btnAdmin.Font = new System.Drawing.Font("微軟正黑體", 12F);
@@ -118,7 +118,7 @@ namespace prjAdoDotNetDemo
             // 
             this.labSelect.AutoSize = true;
             this.labSelect.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labSelect.Location = new System.Drawing.Point(512, 15);
+            this.labSelect.Location = new System.Drawing.Point(463, 15);
             this.labSelect.Name = "labSelect";
             this.labSelect.Size = new System.Drawing.Size(41, 20);
             this.labSelect.TabIndex = 6;
