@@ -112,7 +112,7 @@ namespace prjAdoDotNetDemo
             this.txrNum.Name = "txrNum";
             this.txrNum.Size = new System.Drawing.Size(52, 35);
             this.txrNum.TabIndex = 5;
-            this.txrNum.Text = "10";
+            this.txrNum.Text = "50";
             // 
             // labSelect
             // 
@@ -213,7 +213,8 @@ namespace prjAdoDotNetDemo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1011, 450);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1127, 450);
             this.Controls.Add(this.listName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);

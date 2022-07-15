@@ -26,7 +26,13 @@ namespace prjAdoDotNetDemo
             string[] place = { "台北", "台中", "新北", "新竹", "苗栗", "嘉義", "台南", "雲林", "宜蘭", "花蓮", "屏東", "高雄" };
             string phone = "";
             string email = "";
-            
+            string password = "";
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = @"Data Source=.;Initial Catalog=dbDemo;Integrated Security=True";
+            con.Open();
+
+
             for (int i = 0; i < 8; i++)
             {
                 phone += rnd.Next(0, 9).ToString();
@@ -39,18 +45,18 @@ namespace prjAdoDotNetDemo
             }
             email = email +"@" +company[rnd.Next(0 , company.Length)]+ ".com.tw";
 
-
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=.;Initial Catalog=dbDemo;Integrated Security=True";
-            con.Open();
+            for (int i = 0; i < rnd.Next(7, 12); i++)
+            {
+                password += (char)rnd.Next(97, 122);
+            }
 
             string name = firstname[rnd.Next(0, firstname.Length)] + lastname[rnd.Next(0, lastname.Length)];
-            string sql = "INSERT INTO tCustomer(fName,fPhone,fEmail,fAdress,fPassword,fActived) VALUES";
+            string sql = "INSERT INTO tCustomer(fName,fPhone,fEmail,fAddress,fPassword,fActived) VALUES";
             sql += $"('{name}'," +
                 $"'{phone}'," +
                  $"'{email}'," +
                 $"'{place[rnd.Next(0,place.Length)]}'," +
-                "'123feqwf'," +
+                 $"'{password}'," +
                 "'0')";
 
             SqlCommand cmd = new SqlCommand();
@@ -73,8 +79,8 @@ namespace prjAdoDotNetDemo
             SqlCommand cmd = new SqlCommand();
             
             cmd.Connection = con;
-            //cmd.CommandText = "DELETE FROM tCustomer";     $"'{phone}',"  全部都要格式化
-            cmd.CommandText = $"DELETE FROM tCustomer WHERE fName= '{listName.SelectedItem}'";
+            cmd.CommandText = "DELETE FROM tCustomer"; 
+            //cmd.CommandText = $"DELETE FROM tCustomer WHERE fName= '{listName.SelectedItem}'";
 
 
 
