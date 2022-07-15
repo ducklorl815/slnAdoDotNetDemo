@@ -21,7 +21,8 @@ namespace prjAdoDotNetDemo
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string sql= $"DELETE FROM tCustomer WHERE fId= " + txtfID.Text;
+            string sql = $"UPDATE tCustomer SET fActived=1 WHERE fId= " + txtfID.Text;
+            //string sql= $"DELETE FROM tCustomer WHERE fId= " + txtfID.Text;
             My_execute(sql);
             MessageBox.Show("刪除資料成功");
         }
@@ -45,7 +46,10 @@ namespace prjAdoDotNetDemo
             sql += "'"+txtPassword.Text+"',";   //要新增欄位加這倒數第二
             sql += "'0')";
 
+
+
             My_execute(sql);
+
             MessageBox.Show("新增資料成功");
         }
 
@@ -72,7 +76,7 @@ namespace prjAdoDotNetDemo
             con.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
-            cmd.CommandText = "SELECT * FROM tCustomer";
+            cmd.CommandText = "SELECT * FROM tCustomer WHERE fActived=0";
             SqlDataReader Reader = cmd.ExecuteReader();
             listState.Items.Clear();
             while (Reader.Read())

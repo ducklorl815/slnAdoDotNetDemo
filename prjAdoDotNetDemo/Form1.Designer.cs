@@ -57,7 +57,7 @@ namespace prjAdoDotNetDemo
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new System.Drawing.Size(112, 55);
             btnDelete.TabIndex = 1;
-            btnDelete.Text = "刪除";
+            btnDelete.Text = "ReSet";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += new System.EventHandler(this.button2_Click);
             // 
