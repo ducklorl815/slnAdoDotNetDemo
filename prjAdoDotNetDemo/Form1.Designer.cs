@@ -45,6 +45,7 @@ namespace prjAdoDotNetDemo
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.listName = new System.Windows.Forms.ListBox();
+            this.btnProduct = new System.Windows.Forms.Button();
             btnDelete = new System.Windows.Forms.Button();
             btnUpdate = new System.Windows.Forms.Button();
             btnSelect = new System.Windows.Forms.Button();
@@ -209,12 +210,24 @@ namespace prjAdoDotNetDemo
             this.listName.Size = new System.Drawing.Size(120, 424);
             this.listName.TabIndex = 21;
             // 
+            // btnProduct
+            // 
+            this.btnProduct.Font = new System.Drawing.Font("微軟正黑體", 12F);
+            this.btnProduct.Location = new System.Drawing.Point(149, 372);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Size = new System.Drawing.Size(112, 55);
+            this.btnProduct.TabIndex = 22;
+            this.btnProduct.Text = "產品管理";
+            this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1127, 450);
+            this.Controls.Add(this.btnProduct);
             this.Controls.Add(this.listName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
@@ -253,6 +266,7 @@ namespace prjAdoDotNetDemo
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listName;
+        private System.Windows.Forms.Button btnProduct;
     }
 }
 

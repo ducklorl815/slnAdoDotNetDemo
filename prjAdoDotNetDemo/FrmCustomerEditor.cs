@@ -140,35 +140,38 @@ namespace prjAdoDotNetDemo
             while (Reader.Read())
             {
                 pks.Add((int)Reader["fId"]);//todo 重要!!  把fId存進去的重點
-                listState.Items.Add(Reader["fName".ToString()]);
+                listState.Items.Add(Reader["fId"]+" "+Reader["fName".ToString()]);
             }
             con.Close();
         }
+        #region  
+        //多重執行序 也可以做出displaySql(string sql) 與 displaySql(string sql,List<SqlParameter> paras)
 
-        private void displaySql(string sql)
-        {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=.;Initial Catalog=dbDemo;Integrated Security=True";
+        //private void displaySql(string sql)
+        //{
+        //    SqlConnection con = new SqlConnection();
+        //    con.ConnectionString = @"Data Source=.;Initial Catalog=dbDemo;Integrated Security=True";
 
-            con.Open();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+        //    con.Open();
+        //    SqlCommand cmd = new SqlCommand();
+        //    cmd.Connection = con;
 
-            cmd.CommandText = sql; //下面顯示誰 選到什麼!!!
-            SqlDataReader Reader = cmd.ExecuteReader();
+        //    cmd.CommandText = sql; //下面顯示誰 選到什麼!!!
+        //    SqlDataReader Reader = cmd.ExecuteReader();
 
 
-            if (Reader.Read())//下面顯示誰 選到什麼!!!
-            {
-                txtfID.Text = Reader["fId"].ToString();
-                txtName.Text = Reader["fName"].ToString();
-                txtPhone.Text = Reader["fPhone"].ToString();
-                txtEmail.Text = Reader["fEmail"].ToString();
-                txtAddress.Text = Reader["fAddress"].ToString();
-                txtPassword.Text = Reader["fPassword"].ToString();//顯示誰 看WHERE fId選到什麼!!!
-            }
-            con.Close();
-        }
+        //    if (Reader.Read())//下面顯示誰 選到什麼!!!
+        //    {
+        //        txtfID.Text = Reader["fId"].ToString();
+        //        txtName.Text = Reader["fName"].ToString();
+        //        txtPhone.Text = Reader["fPhone"].ToString();
+        //        txtEmail.Text = Reader["fEmail"].ToString();
+        //        txtAddress.Text = Reader["fAddress"].ToString();
+        //        txtPassword.Text = Reader["fPassword"].ToString();//顯示誰 看WHERE fId選到什麼!!!
+        //    }
+        //    con.Close();
+        //}
+        #endregion
         private void displaySql(string sql,List<SqlParameter> paras)
         {
             SqlConnection con = new SqlConnection();
@@ -200,9 +203,15 @@ namespace prjAdoDotNetDemo
         {
             int i = listState.SelectedIndex;
             int pk = pks[i];
-            displaySql("SELECT * FROM tCustomer WHERE fId=" + pk);
-            //cmd.CommandText = "SELECT * FROM tCustomer WHERE fId=" + pk;
 
+            string sql = "SELECT * FROM tCustomer WHERE fId=@PK";
+            List<SqlParameter> paras = new List<SqlParameter>();
+            paras.Add(new SqlParameter("PK",(object)pk));
+
+            displaySql(sql, paras);
+
+            //displaySql("SELECT * FROM tCustomer WHERE fId=" + pk);
+            //cmd.CommandText = "SELECT * FROM tCustomer WHERE fId=" + pk;
         }
 
 

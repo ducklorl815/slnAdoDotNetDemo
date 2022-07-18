@@ -58,6 +58,18 @@
     <Compile Include="FrmCustomerEditor.Designer.cs">
       <DependentUpon>FrmCustomerEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmProductEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProductEditor.Designer.cs">
+      <DependentUpon>FrmProductEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProductList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProductList.Designer.cs">
+      <DependentUpon>FrmProductList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_keyword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +83,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCustomerEditor.resx">
       <DependentUpon>FrmCustomerEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProductEditor.resx">
+      <DependentUpon>FrmProductEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProductList.resx">
+      <DependentUpon>FrmProductList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_keyword.resx">
       <DependentUpon>Frm_keyword.cs</DependentUpon>

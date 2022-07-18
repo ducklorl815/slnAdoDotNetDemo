@@ -181,5 +181,10 @@ namespace prjAdoDotNetDemo
         {
             (new FrmCustomerEditor()).Show();
         }
+
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+            (new FrmProductList()).Show();
+        }
     }
 }
