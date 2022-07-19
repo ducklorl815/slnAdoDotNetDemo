@@ -58,6 +58,12 @@
     <Compile Include="FrmCustomerEditor.Designer.cs">
       <DependentUpon>FrmCustomerEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMDI.Designer.cs">
+      <DependentUpon>FrmMDI.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProductEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCustomerEditor.resx">
       <DependentUpon>FrmCustomerEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMDI.resx">
+      <DependentUpon>FrmMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProductEditor.resx">
       <DependentUpon>FrmProductEditor.cs</DependentUpon>

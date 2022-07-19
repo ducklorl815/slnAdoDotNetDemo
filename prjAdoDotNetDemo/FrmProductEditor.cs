@@ -18,7 +18,7 @@ namespace prjAdoDotNetDemo
         {
             InitializeComponent();
         }
-
+        #region
         //string _Name;
         //string Name
         //{
@@ -31,25 +31,28 @@ namespace prjAdoDotNetDemo
         //        txtName.Text = value;
         //    }
         //}
+        #endregion
         CProduct _product = new CProduct();
 
         public CProduct product
         {
             get
             {
-                //    try
-                //    {
                 _product.id = Convert.ToInt32(txtfID.Text);
                 _product.name = txtName.Text;
                 _product.qty = Convert.ToInt32(txtQty.Text);
                 _product.cost = Convert.ToDecimal(txtCost.Text);
                 _product.price = Convert.ToDecimal(txtPrice.Text);
                 return _product;
+                #region
+                //try
+                //{
                 //}
                 //catch
                 //{
                 //    return null;
                 //}
+                #endregion
             }
             set
             {

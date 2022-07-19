@@ -130,6 +130,7 @@ namespace prjAdoDotNetDemo
             this.txtfID.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtfID.Location = new System.Drawing.Point(50, 63);
             this.txtfID.Name = "txtfID";
+            this.txtfID.ReadOnly = true;
             this.txtfID.Size = new System.Drawing.Size(484, 33);
             this.txtfID.TabIndex = 15;
             // 
