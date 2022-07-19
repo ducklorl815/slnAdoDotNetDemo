@@ -76,6 +76,7 @@
     <Compile Include="Frm_keyword.Designer.cs">
       <DependentUpon>Frm_keyword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Module\CProduct.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

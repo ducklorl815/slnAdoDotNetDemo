@@ -53,17 +53,6 @@ namespace prjAdoDotNetDemo
             btnSerch.Text = "查詢";
             btnSerch.UseVisualStyleBackColor = true;
             // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button4.Location = new System.Drawing.Point(20, 209);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 45);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "重整";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.btnReSet_Click);
-            // 
             // btnUpdate
             // 
             btnUpdate.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -83,6 +72,17 @@ namespace prjAdoDotNetDemo
             btnDelete.TabIndex = 5;
             btnDelete.Text = "刪除";
             btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button4.Location = new System.Drawing.Point(20, 209);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(100, 45);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "重整";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.btnReSet_Click);
             // 
             // panel1
             // 
@@ -127,6 +127,7 @@ namespace prjAdoDotNetDemo
             this.Controls.Add(this.panel1);
             this.Name = "FrmProductList";
             this.Text = "FrmProductList";
+            this.Load += new System.EventHandler(this.FrmProductList_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataProductList)).EndInit();
             this.ResumeLayout(false);
