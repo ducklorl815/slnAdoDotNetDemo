@@ -32,17 +32,19 @@ namespace prjAdoDotNetDemo
             System.Windows.Forms.Button btnSerch;
             System.Windows.Forms.Button btnUpdate;
             System.Windows.Forms.Button btnDelete;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.Button button1;
+            System.Windows.Forms.Button btnOut;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cboColumn = new System.Windows.Forms.ComboBox();
             this.btnInsert = new System.Windows.Forms.Button();
             this.dataProductList = new System.Windows.Forms.DataGridView();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             btnSerch = new System.Windows.Forms.Button();
             btnUpdate = new System.Windows.Forms.Button();
             btnDelete = new System.Windows.Forms.Button();
-            button1 = new System.Windows.Forms.Button();
+            btnOut = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataProductList)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +52,7 @@ namespace prjAdoDotNetDemo
             // btnSerch
             // 
             btnSerch.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            btnSerch.Location = new System.Drawing.Point(20, 276);
+            btnSerch.Location = new System.Drawing.Point(20, 265);
             btnSerch.Name = "btnSerch";
             btnSerch.Size = new System.Drawing.Size(100, 45);
             btnSerch.TabIndex = 8;
@@ -61,7 +63,7 @@ namespace prjAdoDotNetDemo
             // btnUpdate
             // 
             btnUpdate.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            btnUpdate.Location = new System.Drawing.Point(20, 144);
+            btnUpdate.Location = new System.Drawing.Point(20, 143);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new System.Drawing.Size(100, 45);
             btnUpdate.TabIndex = 6;
@@ -72,7 +74,7 @@ namespace prjAdoDotNetDemo
             // btnDelete
             // 
             btnDelete.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            btnDelete.Location = new System.Drawing.Point(20, 83);
+            btnDelete.Location = new System.Drawing.Point(20, 82);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new System.Drawing.Size(100, 45);
             btnDelete.TabIndex = 5;
@@ -80,10 +82,21 @@ namespace prjAdoDotNetDemo
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnOut
+            // 
+            btnOut.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            btnOut.Location = new System.Drawing.Point(20, 385);
+            btnOut.Name = "btnOut";
+            btnOut.Size = new System.Drawing.Size(100, 45);
+            btnOut.TabIndex = 9;
+            btnOut.Text = "匯出";
+            btnOut.UseVisualStyleBackColor = true;
+            btnOut.Click += new System.EventHandler(this.btnOut_Click);
+            // 
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button4.Location = new System.Drawing.Point(20, 209);
+            this.button4.Location = new System.Drawing.Point(20, 204);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 45);
             this.button4.TabIndex = 7;
@@ -93,7 +106,8 @@ namespace prjAdoDotNetDemo
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(button1);
+            this.panel1.Controls.Add(this.cboColumn);
+            this.panel1.Controls.Add(btnOut);
             this.panel1.Controls.Add(btnSerch);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.btnInsert);
@@ -102,8 +116,18 @@ namespace prjAdoDotNetDemo
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(783, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(135, 450);
+            this.panel1.Size = new System.Drawing.Size(135, 491);
             this.panel1.TabIndex = 2;
+            // 
+            // cboColumn
+            // 
+            this.cboColumn.Font = new System.Drawing.Font("微軟正黑體", 14.25F);
+            this.cboColumn.FormattingEnabled = true;
+            this.cboColumn.Location = new System.Drawing.Point(20, 331);
+            this.cboColumn.Name = "cboColumn";
+            this.cboColumn.Size = new System.Drawing.Size(100, 32);
+            this.cboColumn.TabIndex = 10;
+            this.cboColumn.SelectedIndexChanged += new System.EventHandler(this.cboColumn_SelectedIndexChanged);
             // 
             // btnInsert
             // 
@@ -118,41 +142,34 @@ namespace prjAdoDotNetDemo
             // 
             // dataProductList
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            this.dataProductList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataProductList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PaleTurquoise;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            this.dataProductList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataProductList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Thistle;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.InactiveBorder;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataProductList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataProductList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataProductList.EnableHeadersVisualStyles = false;
             this.dataProductList.Location = new System.Drawing.Point(0, 0);
             this.dataProductList.Name = "dataProductList";
             this.dataProductList.RowTemplate.Height = 24;
-            this.dataProductList.Size = new System.Drawing.Size(783, 450);
+            this.dataProductList.Size = new System.Drawing.Size(783, 491);
             this.dataProductList.TabIndex = 3;
             this.dataProductList.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProductList_RowEnter);
-            // 
-            // button1
-            // 
-            button1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            button1.Location = new System.Drawing.Point(20, 393);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(100, 45);
-            button1.TabIndex = 9;
-            button1.Text = "查詢";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmProductList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(918, 450);
+            this.ClientSize = new System.Drawing.Size(918, 491);
             this.Controls.Add(this.dataProductList);
             this.Controls.Add(this.panel1);
             this.Name = "FrmProductList";
@@ -171,5 +188,7 @@ namespace prjAdoDotNetDemo
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.DataGridView dataProductList;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ComboBox cboColumn;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

@@ -21,6 +21,7 @@ namespace prjAdoDotNetDemo
         public FrmProductList()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
         }
 
         private void btnReSet_Click(object sender, EventArgs e)
@@ -37,12 +38,17 @@ namespace prjAdoDotNetDemo
             dataProductList.Columns[5].Width = 300;
 
             bool isColorChanged = false;
-            foreach (DataGridViewRow r in dataProductList.Rows)
+            Color bgColor; // 準備設定 要強制回復想要的基本初始背景色
+            foreach (DataGridViewRow r in dataProductList.Rows) //搜尋每一ROW
             {
-                isColorChanged = !isColorChanged;
-                r.DefaultCellStyle.BackColor = Color.LightYellow;
+                isColorChanged = !isColorChanged; //2.察覺改色觸動往下走
+                bgColor = Color.PapayaWhip; //設定想要的初始色
                 if (isColorChanged)
-                    r.DefaultCellStyle.BackColor = Color.Wheat;
+                    bgColor = Color.LightSteelBlue; //設定想要的初始色
+                foreach (DataGridViewCell c in r.Cells)
+                {
+                    c.Style.BackColor = bgColor; //1.強制改色 去發動條件 isColorChanged 
+                }
             }
              
         }
@@ -57,7 +63,19 @@ namespace prjAdoDotNetDemo
             DataSet ds = new DataSet();
             adapter.Fill(ds);
             con.Close();
-            dataProductList.DataSource = ds.Tables[0];
+
+            DataView dv = new DataView();
+            dv.Table= ds.Tables[0];
+            dataProductList.DataSource = dv;
+
+            //dataProductList.DataSource = ds.Tables[0];
+
+            cboColumn.Items.Clear();
+            foreach (DataColumn c in ds.Tables[0].Columns) 
+            {
+                cboColumn.Items.Add(c.ColumnName);
+            }
+
             setGridStyle();
         }
 
@@ -70,8 +88,8 @@ namespace prjAdoDotNetDemo
                 return;
 
             CProduct p = F.product;
-            DataTable table = dataProductList.DataSource as DataTable;
-            DataRow row = table.NewRow();
+            DataView dv = dataProductList.DataSource as DataView;
+            DataRow row = dv.Table.NewRow();
 
             //row["fId"] = F.product.id;
 
@@ -80,7 +98,7 @@ namespace prjAdoDotNetDemo
             row["fCost"] = p.cost;
             row["fQty"] = p.qty;
             row["fPrice"] = p.price;
-            table.Rows.Add(row);
+            dv.Table.Rows.Add(row);
         }
 
         private void FrmProductList_Load(object sender, EventArgs e)
@@ -99,8 +117,8 @@ namespace prjAdoDotNetDemo
             if (_postion < 0)
                 return;
 
-            DataTable table = dataProductList.DataSource as DataTable;
-            DataRow row = table.Rows[_postion];
+            DataView dv = dataProductList.DataSource as DataView;
+            DataRow row = dv.Table.Rows[_postion];
             CProduct p = new CProduct()
             {
                 id = (int)row["fId"],
@@ -129,8 +147,8 @@ namespace prjAdoDotNetDemo
             if (_postion < 0)
                 return;
 
-            DataTable table = dataProductList.DataSource as DataTable;
-            DataRow row = table.Rows[_postion];
+            DataView dv = dataProductList.DataSource as DataView;
+            DataRow row = dv.Table.Rows[_postion];
 
             row["fActived"] = 1;
             //row.Delete();
@@ -138,65 +156,98 @@ namespace prjAdoDotNetDemo
 
         private void FrmProductList_FormClosed(object sender, FormClosedEventArgs e)
         {
-            DataTable table = dataProductList.DataSource as DataTable;
-            if(table.Rows.Count>0)
-                 adapter.Update(table);
+            DataView dv = dataProductList.DataSource as DataView;
+            if(dv.Count>0)
+                 adapter.Update(dv.Table);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnOut_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=.;Initial Catalog=dbDemo;Integrated Security=True";
-            con.Open();
-            adapter = new SqlDataAdapter("UPDATE tCustomer SET fActived=0", con);
-            builder.DataAdapter = adapter;
-            con.Close();
+            saveFileDialog1.Filter = "鹹酥雞資料檔|*.xml";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                DataView dv = dataProductList.DataSource as DataView;
 
+                MessageBox.Show("OK");
+
+                DataTable tExport = new DataTable("tExportOnlyForUeberEat.com");
+                tExport.Columns.Add("品名");
+                tExport.Columns.Add("數量");
+                tExport.Columns.Add("售價");
+                foreach (DataRow r in dv.Table.Rows)
+                {
+                    DataRow row = tExport.NewRow();
+                    row["品名"] = r["fName"].ToString();
+                    row["數量"] = 1 +"份";
+                    decimal price = (decimal)r["fPrice"];
+                    row["售價"] = (price * 1.3M).ToString("0") + " 元";
+                    tExport.Rows.Add(row);
+                }
+
+                tExport.WriteXml(saveFileDialog1.FileName);
+
+            }
         }
 
         private void btnSerch_Click(object sender, EventArgs e)
         {
             Frm_keyword f = new Frm_keyword();
-
-
             f.ShowDialog();
 
-            DataTable table = dataProductList.DataSource as DataTable;
-            string sql = $" fName LIKE '%{f.keyword}%' " +
-                         $" OR fCost = '{f.keyword}' " +
-                         $" OR fQty = '{f.keyword}' " +
-                         $" OR fPrice = '{f.keyword}' ";
-
-            //string sql = " fName LIKE  '%" + f.keyword + "%'";
-            //sql += "  OR fCost = '" + f.keyword + "'";
-            //sql += "  OR fPrice = '" + f.keyword + "'";
-            //sql += "  OR fQty = '" + f.keyword + "'";
-
-            DataView dv = table.DefaultView;
-            dv.RowFilter = sql;
-
-            dataProductList.DataSource = dv;
-            
-            ////int a = dv;
-            //dataProductList.Rows[0].Cells[1].Style.BackColor = Color.White;
-            //DefaultCellStyle.BackColor
-
+            if (f.isOkClickButton)
+            {
+                setGridStyle();
+                foreach (DataGridViewRow r in dataProductList.Rows)//每個ROW
+                {
+                    foreach (DataGridViewCell c in r.Cells)//每一格
+                    {
+                        if (c.Value == null)//沒找到 
+                            continue; //繼續找
+                        if (c.Value.ToString().ToUpper().Contains(f.keyword.ToUpper().ToString()))
+                        {//Value 是object 要轉型字串 指令才會有反應   //Contains 模糊比對
+                            c.Style.BackColor = Color.Yellow;
+                        }
+                    }
+                }
+            }
+            //之前寫的
+            #region 
             //DataTable table = dataProductList.DataSource as DataTable;
-            ////table = dataSet.Tables["Suppliers"];
-            //table.Rows = PS.product.id;
-            ////row["fId"] = PS.product.id;         //修改完後的F.product丟回row
-            ////row["fName"] = PS.product.name;
-            //row["fQty"] = PS.product.qty;
-            //row["fCost"] = PS.product.cost;
-            //row["fPrice"] = PS.product.price;
+            //string sql = $" fName LIKE '%{f.keyword}%' " +
+            //             $" OR fCost = '{f.keyword}' " +
+            //             $" OR fQty = '{f.keyword}' " +
+            //             $" OR fPrice = '{f.keyword}' ";
 
-            //$"SELECT * FROM tCustomer WHERE fName LIKE @K_Key" +
-            //    $" OR fPhone LIKE @K_Key" +
-            //    $" OR fEmail LIKE @K_Key" +
-            //    $" OR fAddress LIKE @K_Key";
+            //DataView dv = table.DefaultView;
+
+            //dv.RowFilter = sql;
+
+            //dataProductList.DataSource = dv;
+
+            //List<object> rowid = new List<object>();
+
+            //foreach (DataRowView row in dv)
+            //{
+            //    rowid.Add(row["fId"]);
+
+            //}
+
+            //foreach (object id in rowid)
+            //{
+            //    //使用指定的 DataTable、RowFilter、Sort 和 DataViewRowState，初始化 DataView 類別的新執行個體。
+            //    DataView dv2 = new DataView(table, sql, "fId", DataViewRowState.CurrentRows);
+            //    int index = dv2.Find(id);
+            //    dataProductList.Rows[index].DefaultCellStyle.BackColor = Color.Yellow;
+            //}
+            #endregion
         }
 
-
+        private void cboColumn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataView dv = dataProductList.DataSource as DataView;
+            dv.Sort=cboColumn.Text+" DESC";
+            setGridStyle();
+        }
     }
 
 }

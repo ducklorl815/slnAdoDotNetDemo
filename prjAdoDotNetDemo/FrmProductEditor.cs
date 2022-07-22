@@ -38,7 +38,7 @@ namespace prjAdoDotNetDemo
         {
             get
             {
-                _product.id = Convert.ToInt32(txtfID.Text);
+                //_product.id = Convert.ToInt32(txtfID.Text);
                 _product.name = txtName.Text;
                 _product.qty = Convert.ToInt32(txtQty.Text);
                 _product.cost = Convert.ToDecimal(txtCost.Text);
@@ -57,7 +57,7 @@ namespace prjAdoDotNetDemo
             set
             {
                 _product = value;
-                txtfID.Text = _product.id.ToString();
+                //txtfID.Text = _product.id.ToString();
                 txtName.Text = _product.name;
                 txtQty.Text = _product.qty.ToString();
                 txtCost.Text = _product.cost.ToString("0.0");

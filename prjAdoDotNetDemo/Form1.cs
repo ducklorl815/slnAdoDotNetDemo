@@ -186,5 +186,38 @@ namespace prjAdoDotNetDemo
         {
             (new FrmProductList()).Show();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+
+            con.ConnectionString = @"Data Source=.;Initial Catalog=dbDemo;Integrated Security=True";
+            con.Open();
+            SqlTransaction t = con.BeginTransaction(); 
+            
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.Transaction = t;
+
+            //try
+            //{
+            cmd.CommandText = "INSERT INTO tCustomer(fName,fPhone,fEmail,fAddress,fPassword,fActived) VALUES ('Chirs','0909958887','ducklorl815@gmail.com','taipei','1234','0')";
+            cmd.ExecuteNonQuery();
+            cmd.CommandText = "INSERT INTO tCustomer(fName,fPhone,fEmail,fAddress,fPassword,fActived) VALUES ('Mars','0909958887','ducklorl815@gmail.com',,'1234','0')";
+            cmd.ExecuteNonQuery();
+            t.Commit();
+
+            //MessageBox.Show("新增資料成功");
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("新增資料失敗");
+            //    t.Rollback();
+            //}
+            //finally
+            //{
+                con.Close();
+            //}
+        }
     }
 }

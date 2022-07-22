@@ -117,33 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStripButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADeSURBVFhH7ZfBCcJAEEUXtALPtuDJJrQAr/aiXmwhLViB
-        xXixBsGj+kddCGHC/tmdoMY8eKiXzyMJiwkDLYzgEq6clC3ZpNnBu7NbSHOA2kiJsklTD9AuqcXigFKG
-        gCx6FTB5f5rwDDjD+esrj2eAbFzh+vmLxDsgWsExTMIETKF28DStB4hHmHwumABtnDX5XHQdcIIz2MpP
-        3AKWuHODe0j9L/AOuEC5GjSeAcn7reEZ8PGjOIteBcQd2aT5qoDmwWK1OMBLU0AXLyYbSCPH5QJqlzRH
-        2TK9mv0LITwAHj/y6cVdUa8AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="toolStripButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFJSURBVFhH7dZPKwVRHMbxEfmzsFaWlrZKeQXWXoOy9Wdj
-        YydRNigLpWRjZSdFKTulrCwsvAUSIZLwfer86nQ7586ca+5lcZ76bH6dufM0M/fMFDk5Of8tPdjCE75r
-        pt/cgM4RzTxCB9dpDtEcI3RQnXSOaM4ROqhOOkc0oQLv2McKLtzsN5IKvGAMftbhrzlCH4Zw52ai4iPQ
-        Q7fnZpJUYBuNGcAjbM0qLEvYcVTUogfP1icVWEAoN7A1foFYWi5wiMboUn/A1vgFDnDlnGrg0nKBL8zA
-        Mogz+GsuMYFJ6Jmx+SemMI4TN5OkAtcYhaUL0/CvQKrKBZ4xjFD8HfMVDyX8K1O5wK4GkfTjDbfo1aAk
-        3bA9pHIB3bfFJu6h//qaN4tZhr3gKhdol6YF/vxl1InX8Syi0b69iXZ8kGj7Lv0gycnJ6XCK4gfG72Tz
-        GfenIQAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>126, 17</value>
-  </metadata>
 </root>
